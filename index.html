@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voll Bank | Régua de Cobrança</title>
+  <title>Voll Bank | Painel de Acionamentos</title>
 
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779569197/ChatGPT_Image_23_de_mai._de_2026_17_46_20_siksvl.png" />
   <link rel="apple-touch-icon" href="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779569197/ChatGPT_Image_23_de_mai._de_2026_17_46_20_siksvl.png" />
@@ -11,7 +11,6 @@
   <style>
     :root {
       --surface: rgba(255, 255, 255, 0.96);
-      --surface-2: #f8eef5;
       --primary: #f10059;
       --primary-dark: #4b003f;
       --primary-soft: #ffe7f0;
@@ -19,14 +18,13 @@
       --text: #1f2b46;
       --muted: #6b7a99;
       --line: #ead6e5;
-      --success: #0f9d67;
       --success-soft: #e9fbf4;
       --warning: #b45309;
       --warning-soft: #fff4e8;
       --danger: #c62828;
       --danger-soft: #fff0f0;
-      --shadow: 0 18px 50px rgba(75, 0, 63, 0.12);
-      --radius-xl: 28px;
+      --shadow: 0 14px 36px rgba(75, 0, 63, 0.10);
+      --radius-xl: 24px;
     }
 
     * { box-sizing: border-box; }
@@ -51,34 +49,35 @@
 
     .page {
       width: 100%;
-      max-width: 1220px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 18px 48px;
+      padding: 16px 16px 24px;
     }
 
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .brand-mark {
-      width: 230px;
-      height: 70px;
-      border-radius: 16px;
+      width: 210px;
+      height: 62px;
+      border-radius: 14px;
       background: #ffffff;
-      box-shadow: 0 16px 34px rgba(241, 0, 89, 0.14);
+      box-shadow: 0 12px 28px rgba(241, 0, 89, 0.12);
       overflow: hidden;
-      flex: 0 0 230px;
+      flex: 0 0 210px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(241, 0, 89, 0.08);
@@ -86,46 +85,40 @@
 
     .brand-logo {
       display: block;
-      width: 200px;
+      width: 176px;
       height: auto;
-      max-height: 54px;
+      max-height: 44px;
       object-fit: contain;
     }
 
-    .brand-name {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      line-height: 1.05;
-    }
-
     .brand-name span {
-      font-size: 14px;
+      font-size: 11px;
       color: var(--muted);
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .top-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 14px;
+      padding: 9px 13px;
       border-radius: 999px;
       background: var(--surface);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       color: var(--navy);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
     }
 
     .hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
-      margin-bottom: 22px;
+      gap: 16px;
+      margin-bottom: 16px;
     }
 
     .card {
@@ -138,17 +131,17 @@
     .hero-card {
       position: relative;
       overflow: hidden;
-      padding: 34px;
-      min-height: 320px;
+      padding: 24px;
+      min-height: 250px;
     }
 
     .hero-card::before {
       content: "";
       position: absolute;
-      right: -90px;
-      top: -70px;
-      width: 300px;
-      height: 300px;
+      right: -80px;
+      top: -60px;
+      width: 230px;
+      height: 230px;
       border-radius: 999px;
       background: radial-gradient(circle, rgba(241, 0, 89, 0.14) 0%, rgba(75, 0, 63, 0.08) 42%, transparent 72%);
     }
@@ -156,25 +149,25 @@
     .hero-card::after {
       content: "";
       position: absolute;
-      right: 48px;
-      bottom: 42px;
-      width: 140px;
-      height: 140px;
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(241,0,89,0.12), rgba(75,0,63,0.08));
+      right: 36px;
+      bottom: 30px;
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(241,0,89,0.10), rgba(75,0,63,0.07));
       transform: rotate(12deg);
-      border: 1px solid rgba(241, 0, 89, 0.12);
+      border: 1px solid rgba(241, 0, 89, 0.10);
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
+      padding: 7px 11px;
       border-radius: 999px;
       background: var(--primary-soft);
       color: var(--primary-dark);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -183,120 +176,125 @@
     }
 
     .hero-card h1 {
-      margin: 18px 0 12px;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 0.96;
-      letter-spacing: -0.055em;
+      margin: 14px 0 10px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
       color: var(--navy);
-      max-width: 700px;
+      max-width: 620px;
       position: relative;
       z-index: 1;
     }
 
     .hero-card p {
       margin: 0;
-      font-size: 17px;
-      line-height: 1.65;
+      font-size: 14px;
+      line-height: 1.5;
       color: var(--muted);
-      max-width: 720px;
+      max-width: 620px;
       position: relative;
       z-index: 1;
     }
 
     .hero-highlight {
-      margin-top: 24px;
+      margin-top: 16px;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       position: relative;
       z-index: 1;
     }
 
     .mini-stat {
-      padding: 12px 14px;
-      border-radius: 16px;
+      padding: 10px 12px;
+      border-radius: 14px;
       background: #fff;
       border: 1px solid var(--line);
-      min-width: 150px;
+      min-width: 146px;
     }
 
     .mini-stat strong {
       display: block;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--navy);
       margin-bottom: 4px;
     }
 
     .mini-stat span {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
+      line-height: 1.35;
     }
 
-    .contact-card { padding: 24px; }
+    .contact-card {
+      padding: 18px 20px;
+    }
 
     .contact-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 10px;
+      margin-bottom: 12px;
     }
 
     .contact-head small {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.10em;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .contact-head h2 {
       margin: 0;
-      font-size: 26px;
-      line-height: 1.08;
+      font-size: 22px;
+      line-height: 1.06;
       letter-spacing: -0.03em;
       color: var(--navy);
     }
 
     .status-pill {
-      padding: 9px 12px;
+      padding: 8px 11px;
       border-radius: 999px;
       background: var(--warning-soft);
       color: var(--warning);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       white-space: nowrap;
     }
 
     .client-form {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 8px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 6px;
     }
 
-    .field { display: grid; gap: 7px; }
-    .field.full { grid-column: 1 / -1; }
+    .field {
+      display: grid;
+      gap: 6px;
+    }
 
     .field label {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       font-weight: 800;
     }
 
     .field input {
       width: 100%;
-      min-height: 46px;
+      min-height: 40px;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 13px;
       background: #fff;
       color: var(--text);
       font-size: 14px;
-      padding: 11px 13px;
+      padding: 10px 12px;
       outline: none;
       transition: border-color .15s ease, box-shadow .15s ease;
     }
@@ -306,48 +304,45 @@
       box-shadow: 0 0 0 4px rgba(241, 0, 89, 0.10);
     }
 
-    .contact-hint {
-      margin-top: 14px;
-      padding: 13px 14px;
-      border-radius: 16px;
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
     .section-card {
-      padding: 30px;
-      margin-top: 22px;
+      padding: 24px 26px;
+      margin-top: 16px;
     }
 
     .section-head {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      margin-bottom: 22px;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
     .section-head h3 {
       margin: 0;
       color: var(--navy);
-      font-size: 28px;
+      font-size: 24px;
       letter-spacing: -0.04em;
     }
 
     .section-head p {
-      margin: 6px 0 0;
+      margin: 4px 0 0;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.45;
+      font-size: 14px;
     }
 
     .global-actions {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: flex-end;
+      align-items: center;
       gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .global-actions .btn {
+      flex: 0 0 auto;
+      white-space: nowrap;
     }
 
     .btn {
@@ -357,8 +352,8 @@
       -webkit-user-select: none;
       border: 0;
       border-radius: 14px;
-      min-height: 46px;
-      padding: 12px 16px;
+      min-height: 42px;
+      padding: 10px 14px;
       font-size: 14px;
       font-weight: 800;
       cursor: pointer;
@@ -366,16 +361,19 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease, background .15s ease;
+      transition: box-shadow .15s ease, opacity .15s ease, background .15s ease;
+      text-decoration: none;
     }
 
-    .btn:hover { transform: translateY(-1px); }
-    .btn:disabled { opacity: 0.68; cursor: wait; transform: none; }
+    .btn:disabled {
+      opacity: 0.68;
+      cursor: wait;
+    }
 
     .btn-primary {
       color: #fff;
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      box-shadow: 0 14px 28px rgba(241, 0, 89, 0.22);
+      box-shadow: 0 10px 22px rgba(241, 0, 89, 0.20);
     }
 
     .btn-secondary {
@@ -383,30 +381,34 @@
       background: var(--primary-soft);
     }
 
-    .mobile-status {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: #fff8fb;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
+    .btn-status {
+      min-width: 138px;
+      border: 1px solid transparent;
     }
 
-    .mobile-status strong { color: var(--navy); }
-    .mobile-status.ok { background: var(--success-soft); border-color: #bdebd7; color: #0b6b47; }
-    .mobile-status.error { background: var(--danger-soft); border-color: #ffd4d4; color: var(--danger); }
-    .mobile-status.pending { background: var(--primary-soft); border-color: #ffd1e0; color: var(--primary-dark); }
+    .status-online {
+      color: #0b6b47;
+      background: var(--success-soft);
+      border-color: #bdebd7;
+    }
+
+    .status-offline {
+      color: var(--danger);
+      background: var(--danger-soft);
+      border-color: #ffd4d4;
+    }
+
+    .status-checking {
+      color: var(--primary-dark);
+      background: var(--primary-soft);
+      border-color: #ffd1e0;
+    }
 
     .timeline {
       position: relative;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
 
     .timeline::before {
@@ -414,7 +416,7 @@
       position: absolute;
       left: 9%;
       right: 9%;
-      top: 52px;
+      top: 42px;
       height: 4px;
       border-radius: 999px;
       background: linear-gradient(90deg, rgba(241,0,89,0.16), rgba(241,0,89,0.45), rgba(241,0,89,0.16));
@@ -424,12 +426,12 @@
     .step {
       position: relative;
       z-index: 1;
-      padding: 22px;
-      border-radius: 24px;
+      padding: 18px;
+      border-radius: 22px;
       background: #fff;
       border: 1px solid var(--line);
-      box-shadow: 0 12px 30px rgba(75, 0, 63, 0.08);
-      min-height: 290px;
+      box-shadow: 0 10px 24px rgba(75, 0, 63, 0.07);
+      min-height: 212px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -437,19 +439,19 @@
 
     .step-top {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: flex-start;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .step-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      flex: 0 0 64px;
-      font-size: 28px;
+      flex: 0 0 56px;
+      font-size: 26px;
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
     }
 
@@ -458,37 +460,26 @@
     .step.whatsapp .step-icon { background: #e9fbf4; color: #0d8f5d; }
 
     .step-kicker {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
       font-weight: 800;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .step h4 {
       margin: 0;
-      font-size: 23px;
-      line-height: 1.14;
-      letter-spacing: -0.04em;
+      font-size: 18px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
       color: var(--navy);
     }
 
     .step p {
-      margin: 0 0 16px;
+      margin: 0 0 12px;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.58;
-    }
-
-    .step-meta {
-      margin-bottom: 16px;
-      padding: 12px 13px;
-      border-radius: 15px;
-      background: #fff8fb;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.45;
     }
 
@@ -501,7 +492,7 @@
 
     .result-badge {
       display: none;
-      padding: 8px 10px;
+      padding: 7px 10px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 800;
@@ -512,80 +503,62 @@
     .result-badge.pending { display: inline-flex; background: var(--primary-soft); color: var(--primary-dark); }
 
     .toggle-card {
-      margin-top: 22px;
-      padding: 22px 26px;
-      border-radius: 24px;
+      margin-top: 16px;
+      padding: 18px 22px;
+      border-radius: 22px;
       background: var(--surface);
       border: 1px dashed #f6b7cf;
-      box-shadow: 0 12px 35px rgba(75, 0, 63, 0.06);
+      box-shadow: 0 10px 24px rgba(75, 0, 63, 0.05);
       display: flex;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
     }
 
-    .toggle-card h3 { margin: 0; color: var(--navy); font-size: 22px; letter-spacing: -0.03em; }
-    .toggle-card p { margin: 5px 0 0; color: var(--muted); line-height: 1.45; }
+    .toggle-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
 
     .debug-panel { display: none; }
     .debug-panel.is-open { display: block; }
-
-    .notice {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: var(--success-soft);
-      border: 1px solid #bdebd7;
-      color: #0b6b47;
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    .notice.warning {
-      background: var(--warning-soft);
-      border-color: #ffdcb6;
-      color: var(--warning);
-    }
-
-    .notice code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.95em;
-    }
 
     .log-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .log-head h3 {
       margin: 0;
       color: var(--navy);
-      font-size: 22px;
+      font-size: 20px;
       letter-spacing: -0.03em;
     }
 
     pre {
       margin: 0;
-      min-height: 180px;
-      max-height: 380px;
+      min-height: 160px;
+      max-height: 340px;
       overflow: auto;
-      border-radius: 18px;
+      border-radius: 16px;
       background: #21002f;
       color: #ffe7f0;
-      padding: 18px;
+      padding: 16px;
       white-space: pre-wrap;
       word-break: break-word;
-      font-size: 13px;
-      line-height: 1.55;
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .test-list {
       display: grid;
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .test-row {
@@ -593,11 +566,11 @@
       grid-template-columns: 1fr auto;
       gap: 12px;
       align-items: center;
-      padding: 12px 14px;
+      padding: 11px 13px;
       border-radius: 14px;
       border: 1px solid var(--line);
       background: #fff8fb;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .test-row span:first-child { color: var(--text); font-weight: 760; }
@@ -608,22 +581,45 @@
     @media (max-width: 980px) {
       .hero { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: 1fr; }
-      .timeline::before { top: 0; bottom: 0; left: 32px; right: auto; width: 4px; height: auto; }
+      .timeline::before { top: 0; bottom: 0; left: 28px; right: auto; width: 4px; height: auto; }
       .section-head, .toggle-card { flex-direction: column; align-items: flex-start; }
       .global-actions { justify-content: flex-start; }
     }
 
     @media (max-width: 560px) {
-      .page { padding: 16px 12px 32px; }
-      .hero-card, .contact-card, .section-card { padding: 20px; border-radius: 20px; }
-      .client-form { grid-template-columns: 1fr; }
-      .field.full { grid-column: auto; }
-      .brand-mark { width: 210px; flex-basis: 210px; }
-      .brand-logo { width: 184px; }
-      .brand-name span { font-size: 12px; }
-      .hero-card h1 { font-size: 30px; }
-      .step { padding: 18px; }
+      .page { padding: 12px 10px 24px; }
+      .hero-card, .contact-card, .section-card { padding: 18px; border-radius: 20px; }
+      .brand-mark { width: 180px; flex-basis: 180px; height: 56px; }
+      .brand-logo { width: 154px; }
+      .brand-name span { font-size: 10px; }
+      .hero-card h1 { font-size: 28px; }
+      .step { padding: 16px; }
       .test-row { grid-template-columns: 1fr; }
+      .global-actions {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+    }
+
+    @media (min-width: 981px) and (max-height: 900px) {
+      .page { padding-top: 12px; padding-bottom: 18px; }
+      .topbar { margin-bottom: 12px; }
+      .hero { gap: 14px; margin-bottom: 14px; }
+      .hero-card { min-height: 232px; padding: 20px; }
+      .contact-card { padding: 16px 18px; }
+      .hero-card h1 { font-size: clamp(22px, 2.7vw, 31px); }
+      .hero-card p { font-size: 13px; }
+      .mini-stat { padding: 8px 10px; min-width: 136px; }
+      .mini-stat strong { font-size: 12px; }
+      .mini-stat span { font-size: 11px; }
+      .section-card { padding: 20px 22px; }
+      .section-head h3 { font-size: 22px; }
+      .step { min-height: 196px; padding: 16px; }
+      .step h4 { font-size: 17px; }
+      .step p { font-size: 13px; }
+      .btn { min-height: 40px; padding: 9px 13px; font-size: 13px; }
+      .toggle-card { margin-top: 14px; padding: 16px 20px; }
     }
   </style>
 </head>
@@ -632,11 +628,7 @@
     <div class="topbar">
       <div class="brand">
         <div class="brand-mark" aria-label="Logo Voll Bank">
-          <img
-            class="brand-logo"
-            src="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779568546/vollbanklogo_c3m4ap.png"
-            alt="Voll Bank"
-          />
+          <img class="brand-logo" src="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779568546/vollbanklogo_c3m4ap.png" alt="Voll Bank" />
         </div>
         <div class="brand-name">
           <span>Powered by Voll Solutions</span>
@@ -648,10 +640,8 @@
     <section class="hero">
       <div class="card hero-card">
         <div class="eyebrow">Voll Bank Demo</div>
-        <h1>Régua de Cobrança Voll Workflows</h1>
-        <p>
-          Simule uma jornada de contato moderna, omnichannel e orientada à experiência. Escolha o canal ideal para cada cliente ou execute a régua completa em sequência.
-        </p>
+        <h1>Régua inteligente para relacionamento financeiro</h1>
+        <p>Simule uma jornada de contato moderna, omnichannel e orientada à experiência. Escolha o canal ideal para cada cliente.</p>
 
         <div class="hero-highlight">
           <div class="mini-stat"><strong>E-mail</strong><span>Registro claro e formal</span></div>
@@ -670,22 +660,18 @@
         </div>
 
         <div class="client-form">
-          <div class="field full">
+          <div class="field">
             <label for="contactName">Nome</label>
             <input id="contactName" type="text" value="RICARDO M" autocomplete="name" />
           </div>
-          <div class="field full">
+          <div class="field">
             <label for="contactEmail">E-mail</label>
             <input id="contactEmail" type="email" value="ricardo@vollsolutions.com.br" autocomplete="email" />
           </div>
-          <div class="field full">
+          <div class="field">
             <label for="contactPhone">Telefone</label>
             <input id="contactPhone" type="tel" value="11989785888" autocomplete="tel" />
           </div>
-        </div>
-
-        <div class="contact-hint">
-          Os dados acima são usados no envio. O campo de WhatsApp é preenchido automaticamente com <strong>55 + telefone</strong>.
         </div>
       </aside>
     </section>
@@ -693,18 +679,13 @@
     <section class="card section-card">
       <div class="section-head">
         <div>
-          <h3>Régua de cobrança</h3>
-          <p>Dispare cada canal separadamente ou envie a régua completa para simular a jornada de comunicação.</p>
+          <h3>Painel de acionamentos</h3>
+          <p>Dispare cada canal separadamente para simular a jornada de comunicação.</p>
         </div>
         <div class="global-actions">
+          <button id="serviceStatusBtn" class="btn btn-status status-checking" type="button">Verificando...</button>
           <button id="clearStatusBtn" class="btn btn-secondary" type="button">Limpar status</button>
-          <button id="sendAllBtn" class="btn btn-primary" type="button">Enviar régua completa</button>
         </div>
-      </div>
-
-      <div id="mobileStatus" class="mobile-status">
-        <span>ℹ️</span>
-        <span><strong>Status:</strong> pronto para enviar. Toque em um canal abaixo para disparar a comunicação.</span>
       </div>
 
       <div class="timeline">
@@ -718,7 +699,6 @@
               </div>
             </div>
             <p>Formaliza a comunicação com o cliente e apresenta a oportunidade de regularização.</p>
-            <div class="step-meta">Canal ideal para comunicações mais completas e formais.</div>
           </div>
           <div class="step-footer">
             <button class="btn btn-primary action-btn" type="button" data-action="EMAIL">Enviar e-mail</button>
@@ -736,7 +716,6 @@
               </div>
             </div>
             <p>Envia uma mensagem objetiva, reforçando o convite para negociação de forma rápida.</p>
-            <div class="step-meta">Canal leve e direto para alertas e lembretes de contato.</div>
           </div>
           <div class="step-footer">
             <button class="btn btn-primary action-btn" type="button" data-action="SMS">Enviar SMS</button>
@@ -754,7 +733,6 @@
               </div>
             </div>
             <p>Aciona o cliente no canal conversacional para facilitar a continuidade da negociação.</p>
-            <div class="step-meta">Canal de maior proximidade para atendimento prático e ágil.</div>
           </div>
           <div class="step-footer">
             <button class="btn btn-primary action-btn" type="button" data-action="WHATSAPP">Enviar WhatsApp</button>
@@ -765,26 +743,11 @@
     </section>
 
     <section class="toggle-card">
-      <div>
-        <h3>Painel técnico</h3>
-        <p>Mostra configuração de envio, log da demonstração e testes reais do proxy. Pode ficar oculto durante a apresentação.</p>
-      </div>
+      <div><h3>Painel técnico</h3></div>
       <button id="debugToggleButton" class="btn btn-secondary" type="button">Mostrar painel técnico</button>
     </section>
 
     <div id="debugPanel" class="debug-panel">
-      <section class="card section-card">
-        <div class="section-head">
-          <div>
-            <h3>Configuração de envio</h3>
-            <p>Todos os botões enviam uma requisição POST para o proxy, que repassa o payload ao serviço configurado.</p>
-          </div>
-        </div>
-        <div class="notice">
-          <strong>Modo ativo:</strong> envio real via proxy Render em <code>https://demo-cob-bancoabc.onrender.com/api/regua-cobranca</code>.
-        </div>
-      </section>
-
       <section class="card section-card">
         <div class="log-head">
           <h3>Log da demonstração</h3>
@@ -793,9 +756,6 @@
           </div>
         </div>
         <pre id="log">Aguardando acionamento da régua...</pre>
-        <div class="notice warning">
-          <strong>Nota:</strong> os testes reais abaixo verificam disponibilidade do proxy sem disparar mensagens. Os botões da régua realizam envios reais.
-        </div>
       </section>
 
       <section class="card section-card">
@@ -904,14 +864,6 @@
       el.scrollTop = el.scrollHeight;
     }
 
-    function setMobileStatus(state, message) {
-      const el = document.getElementById("mobileStatus");
-      if (!el) return;
-      el.className = state ? `mobile-status ${state}` : "mobile-status";
-      const icon = state === "ok" ? "✅" : state === "error" ? "⚠️" : state === "pending" ? "⏳" : "ℹ️";
-      el.innerHTML = `<span>${icon}</span><span>${message}</span>`;
-    }
-
     function setBadge(action, state, text) {
       const badge = document.querySelector(`[data-result="${action}"]`);
       if (!badge) return;
@@ -933,7 +885,7 @@
       return "Enviar";
     }
 
-    async function fetchWithTimeout(url, options = {}, timeoutMs = 12000) {
+    async function fetchWithTimeout(url, options = {}, timeoutMs = 30000) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
       try {
@@ -948,7 +900,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
-      });
+      }, 30000);
 
       const contentType = response.headers.get("content-type") || "";
       const responseBody = contentType.includes("application/json")
@@ -980,6 +932,94 @@
       ].join(" ");
     }
 
+    function setServiceStatus(state) {
+      const button = document.getElementById("serviceStatusBtn");
+      if (!button) return;
+
+      button.classList.remove("status-online", "status-offline", "status-checking");
+      button.removeAttribute("title");
+
+      if (state === "online") {
+        button.classList.add("status-online");
+        button.textContent = "● Online";
+        return;
+      }
+
+      if (state === "offline") {
+        button.classList.add("status-offline");
+        button.textContent = "● Offline";
+        return;
+      }
+
+      button.classList.add("status-checking");
+      button.textContent = "Verificando...";
+    }
+
+    async function checkServiceStatus() {
+      setServiceStatus("checking");
+
+      try {
+        const response = await fetchWithTimeout(`${API_BASE_URL}/`, {
+          method: "GET",
+          cache: "no-store"
+        }, 15000);
+
+        if (!response.ok) {
+          throw new Error(`GET / retornou HTTP ${response.status}`);
+        }
+
+        setServiceStatus("online");
+        return true;
+      } catch (error) {
+        setServiceStatus("offline");
+        return false;
+      }
+    }
+
+    async function warmUpRenderService() {
+      const button = document.getElementById("serviceStatusBtn");
+      if (button) button.disabled = true;
+
+      setServiceStatus("checking");
+      log("Iniciando bateria de testes para ativar cold start do Render.");
+
+      try {
+        const checks = [
+          fetchWithTimeout(`${API_BASE_URL}/`, { method: "GET", cache: "no-store" }, 30000),
+          fetchWithTimeout(API_URL, { method: "OPTIONS", cache: "no-store" }, 30000),
+          fetchWithTimeout(API_URL, { method: "GET", cache: "no-store" }, 30000)
+        ];
+
+        const results = await Promise.allSettled(checks);
+
+        log("Resultado da bateria de testes do Render", results.map((result, index) => ({
+          test: index + 1,
+          status: result.status,
+          httpStatus: result.value ? result.value.status : null,
+          error: result.reason ? String(result.reason.message || result.reason) : null
+        })));
+
+        const hasActiveService = results.some((result) => {
+          if (result.status !== "fulfilled") return false;
+          return [200, 204, 404, 405].includes(result.value.status);
+        });
+
+        if (!hasActiveService) {
+          throw new Error("Nenhum teste confirmou resposta válida do serviço Render.");
+        }
+
+        setServiceStatus("online");
+      } catch (error) {
+        setServiceStatus("offline");
+        log("Erro ao executar bateria de testes do Render", {
+          message: explainFetchFailure(error),
+          originalError: String(error && error.message ? error.message : error)
+        });
+      } finally {
+        if (button) button.disabled = false;
+      }
+    }
+
     async function sendTrigger(action, button) {
       const normalizedAction = validateAction(action);
       const btn = button || null;
@@ -992,7 +1032,6 @@
       }
 
       setBadge(normalizedAction, "pending", "Enviando");
-      setMobileStatus("pending", `<strong>Enviando ${normalizedAction}...</strong> Aguarde alguns segundos.`);
       log(`Enviando acionamento: ${normalizedAction}`, {
         method: "POST",
         targetUrl: API_URL,
@@ -1002,12 +1041,10 @@
       try {
         const responseBody = await postJson(API_URL, payload);
         setBadge(normalizedAction, "ok", "Enviado");
-        setMobileStatus("ok", `<strong>${normalizedAction} enviado com sucesso.</strong> A comunicação foi acionada.`);
         log(`Sucesso no acionamento: ${normalizedAction}`, responseBody);
         return responseBody;
       } catch (error) {
         setBadge(normalizedAction, "error", "Erro");
-        setMobileStatus("error", `<strong>Erro ao enviar ${normalizedAction}.</strong> Abra o painel técnico para ver detalhes.`);
         log(`Erro no acionamento: ${normalizedAction}`, {
           message: explainFetchFailure(error),
           originalError: String(error && error.message ? error.message : error),
@@ -1023,33 +1060,9 @@
       }
     }
 
-    async function sendAll() {
-      const buttons = Array.from(document.querySelectorAll(".action-btn"));
-      buttons.forEach((button) => button.disabled = true);
-      log("Iniciando envio da régua completa: EMAIL -> SMS -> WHATSAPP");
-
-      try {
-        for (const action of ALLOWED_ACTIONS) {
-          await sendTrigger(action);
-        }
-        setMobileStatus("ok", "<strong>Régua completa enviada com sucesso.</strong> Todos os canais foram acionados.");
-        log("Régua completa finalizada com sucesso.");
-      } catch (error) {
-        log("Régua completa interrompida por erro.", {
-          message: explainFetchFailure(error)
-        });
-      } finally {
-        buttons.forEach((button, index) => {
-          button.disabled = false;
-          button.textContent = getButtonText(ALLOWED_ACTIONS[index]);
-        });
-      }
-    }
-
     function clearLog() {
       const logEl = document.getElementById("log");
       if (logEl) logEl.textContent = "Aguardando acionamento da régua...";
-      setMobileStatus("", "<strong>Status:</strong> pronto para enviar. Toque em um canal abaixo para disparar a comunicação.");
       resetBadges();
     }
 
@@ -1127,7 +1140,7 @@
       log("Iniciando testes reais de conectividade do proxy Render.");
 
       await runTest("Serviço Render está ativo", async () => {
-        const response = await fetchWithTimeout(`${API_BASE_URL}/`, { method: "GET" }, 15000);
+        const response = await fetchWithTimeout(`${API_BASE_URL}/`, { method: "GET", cache: "no-store" }, 15000);
         const body = await parseResponse(response);
         if (!response.ok) throw new Error(`GET / retornou HTTP ${response.status}`);
         log("Teste GET / executado", { status: response.status, body });
@@ -1135,7 +1148,7 @@
       });
 
       await runTest("Endpoint /api/regua-cobranca responde a OPTIONS", async () => {
-        const response = await fetchWithTimeout(API_URL, { method: "OPTIONS" }, 15000);
+        const response = await fetchWithTimeout(API_URL, { method: "OPTIONS", cache: "no-store" }, 15000);
         if (!response.ok && response.status !== 204) {
           throw new Error(`OPTIONS retornou HTTP ${response.status}`);
         }
@@ -1149,7 +1162,7 @@
       });
 
       await runTest("Endpoint /api/regua-cobranca está acessível sem disparar mensagem", async () => {
-        const response = await fetchWithTimeout(API_URL, { method: "GET" }, 15000);
+        const response = await fetchWithTimeout(API_URL, { method: "GET", cache: "no-store" }, 15000);
         const body = await parseResponse(response);
         const acceptable = [200, 404, 405].includes(response.status);
         if (!acceptable) throw new Error(`GET /api/regua-cobranca retornou HTTP ${response.status}`);
@@ -1192,8 +1205,8 @@
         });
       });
 
-      const sendAllBtn = document.getElementById("sendAllBtn");
-      if (sendAllBtn) sendAllBtn.addEventListener("click", () => sendAll());
+      const serviceStatusBtn = document.getElementById("serviceStatusBtn");
+      if (serviceStatusBtn) serviceStatusBtn.addEventListener("click", () => warmUpRenderService());
 
       const clearStatusBtn = document.getElementById("clearStatusBtn");
       if (clearStatusBtn) clearStatusBtn.addEventListener("click", () => clearLog());
@@ -1211,7 +1224,10 @@
     document.addEventListener("DOMContentLoaded", () => {
       syncContactPreview();
       bindButtonEvents();
-      setMobileStatus("", "<strong>Status:</strong> pronto para enviar. Toque em um canal abaixo para disparar a comunicação.");
+      checkServiceStatus();
+      setInterval(() => {
+        checkServiceStatus();
+      }, 60000);
     });
   </script>
 </body>
