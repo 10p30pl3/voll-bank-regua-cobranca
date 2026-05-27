@@ -3,313 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voll Bank | Régua de Cobrança</title>
+  <title>Voll Bank | Régua de Comunicação</title>
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779569197/ChatGPT_Image_23_de_mai._de_2026_17_46_20_siksvl.png" />
   <style>
-    :root {
-      --voll-pink: #f10059;
-      --voll-purple: #4b003f;
-      --voll-deep: #21002f;
-      --voll-soft: #ffe7f0;
-      --voll-line: #ead6e5;
-      --text: #1f2b46;
-      --muted: #6b7a99;
-      --panel: rgba(255,255,255,.96);
-      --green: #0b8f5d;
-      --gold: #eab93f;
-      --gray: #76727e;
-      --shadow: 0 18px 46px rgba(75,0,63,.12);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 8% 8%, rgba(241,0,89,.13), transparent 28%),
-        radial-gradient(circle at 88% 16%, rgba(75,0,63,.12), transparent 25%),
-        linear-gradient(180deg, #fff8fb 0%, #f7eef5 100%);
-      -webkit-font-smoothing: antialiased;
-    }
-    button, input, select, textarea { font: inherit; }
-    .page { max-width: 1320px; margin: 0 auto; padding: 18px 18px 38px; }
-    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
-    .brand { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .brand-mark { width: 202px; height: 58px; border-radius: 14px; background: #fff; border: 1px solid rgba(241,0,89,.10); box-shadow: 0 12px 28px rgba(241,0,89,.12); display: grid; place-items: center; }
-    .brand-logo { width: 170px; max-height: 42px; object-fit: contain; }
-    .powered { color: var(--muted); font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
-    .chip { display: inline-flex; align-items: center; border-radius: 999px; padding: 10px 14px; background: #fff; border: 1px solid var(--voll-line); color: var(--voll-purple); box-shadow: 0 10px 24px rgba(75,0,63,.07); font-size: 12px; font-weight: 850; }
-    .hero { text-align: center; padding: 8px 14px 34px; }
-    .hero h1 { margin: 0 0 10px; color: var(--voll-deep); font-size: clamp(34px, 4vw, 52px); line-height: 1.05; letter-spacing: -.045em; }
-    .hero p { max-width: 820px; margin: 0 auto; color: var(--muted); font-size: 18px; line-height: 1.55; }
-    .regua-layout { display: grid; grid-template-columns: 260px 1fr; gap: 34px; align-items: start; }
-    .profile-menu { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--voll-line); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
-    .profile-btn { width: 100%; min-height: 70px; border: 0; border-bottom: 1px solid var(--voll-line); background: #fff; color: var(--voll-deep); display: flex; align-items: center; gap: 14px; padding: 14px 20px; text-align: left; cursor: pointer; font-size: 15px; font-weight: 850; transition: background .18s ease, color .18s ease; }
-    .profile-btn:last-child { border-bottom: 0; }
-    .profile-btn:hover { background: #fff8fb; }
-    .profile-btn.active { color: #fff; background: linear-gradient(135deg, var(--voll-pink), var(--voll-purple)); }
-    .profile-icon { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 999px; display: grid; place-items: center; background: var(--voll-soft); color: var(--voll-purple); font-size: 18px; font-weight: 900; }
-    .profile-btn.active .profile-icon { background: rgba(255,255,255,.20); color: #fff; }
-    .regua-panel { background: var(--panel); border: 1px solid var(--voll-line); border-radius: 24px; box-shadow: var(--shadow); padding: 28px 34px 34px; overflow: hidden; }
-    .regua-panel h2 { margin: 0 0 12px; text-align: center; color: var(--voll-deep); font-size: clamp(24px, 2.4vw, 31px); line-height: 1.15; letter-spacing: -.035em; }
-    .regua-panel p { max-width: 780px; margin: 0 auto 34px; text-align: center; color: var(--muted); font-size: 16px; line-height: 1.58; }
-    .timeline-shell { width: 100%; overflow-x: auto; padding: 8px 0 4px; }
-    .timeline { position: relative; display: flex; align-items: flex-start; gap: 0; min-width: 860px; padding: 0 8px; }
-    .timeline::before { content: ""; position: absolute; top: 18px; left: 38px; right: 38px; height: 4px; background: linear-gradient(90deg, #76727e 0%, var(--voll-pink) 34%, var(--voll-purple) 60%, var(--gold) 100%); border-radius: 999px; z-index: 0; }
-    .step { position: relative; z-index: 1; flex: 1 0 88px; text-align: center; color: var(--voll-deep); }
-    .dot { width: 36px; height: 36px; margin: 0 auto 8px; border-radius: 999px; display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 950; box-shadow: 0 8px 18px rgba(47,28,90,.12); }
-    .gray { background: var(--gray); } .pink { background: var(--voll-pink); } .purple { background: var(--voll-purple); } .green { background: var(--green); } .gold { background: var(--gold); }
-    .step-label { min-height: 34px; padding: 0 5px; color: var(--voll-deep); font-size: 11px; line-height: 1.18; }
-    .channel { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 24px; margin-top: 6px; color: var(--voll-purple); font-size: 12px; font-weight: 850; flex-wrap: wrap; }
-    .channel-pill { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 3px 7px; background: var(--voll-soft); color: var(--voll-purple); border: 1px solid #ffd1e0; }
-    .custom-editor { display: none; margin-top: 30px; border-top: 1px solid var(--voll-line); padding-top: 22px; }
-    .custom-editor.is-open { display: block; }
-    .editor-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
-    .editor-head h3 { margin: 0; color: var(--voll-deep); font-size: 22px; letter-spacing: -.035em; }
-    .editor-head p { margin: 4px 0 0; text-align: left; font-size: 13px; max-width: 680px; }
-    .btn { border: 0; border-radius: 14px; min-height: 40px; padding: 9px 14px; font-size: 13px; font-weight: 850; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; }
-    .btn-primary { color: #fff; background: linear-gradient(135deg, var(--voll-pink), var(--voll-purple)); box-shadow: 0 10px 22px rgba(241,0,89,.20); }
-    .btn-secondary { color: var(--voll-purple); background: var(--voll-soft); }
-    .custom-list { display: grid; gap: 10px; }
-    .custom-row { display: grid; grid-template-columns: 90px 150px 1fr 44px; gap: 10px; align-items: center; padding: 10px; border: 1px solid var(--voll-line); border-radius: 16px; background: #fff; }
-    .custom-row label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
-    .custom-row input, .custom-row select { width: 100%; min-height: 38px; border: 1px solid var(--voll-line); border-radius: 12px; padding: 8px 10px; outline: none; color: var(--text); background: #fff; }
-    .custom-row input:focus, .custom-row select:focus { border-color: var(--voll-pink); box-shadow: 0 0 0 4px rgba(241,0,89,.10); }
-    .remove-btn { width: 38px; height: 38px; border-radius: 12px; border: 0; background: #fff0f0; color: #c62828; font-weight: 900; cursor: pointer; }
-    .footnote { max-width: 1000px; margin: 24px auto 0; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.45; }
-    @media (max-width: 980px) { .regua-layout { grid-template-columns: 1fr; gap: 22px; } .profile-menu { display: grid; grid-template-columns: repeat(2,1fr); } .profile-btn { border-bottom: 1px solid var(--voll-line); } .profile-btn:nth-child(odd) { border-right: 1px solid var(--voll-line); } .regua-panel { padding: 26px 22px; } .custom-row { grid-template-columns: 1fr 1fr; } .remove-btn { width: 100%; } }
-    @media (max-width: 620px) { .page { padding: 16px 12px 28px; } .topbar, .brand { justify-content: center; } .powered { width: 100%; text-align: center; } .brand-mark { width: 178px; height: 54px; } .brand-logo { width: 150px; } .profile-menu { grid-template-columns: 1fr; } .profile-btn:nth-child(odd) { border-right: 0; } .hero h1 { font-size: 34px; } .custom-row { grid-template-columns: 1fr; } }
+    :root{--voll-pink:#f10059;--voll-purple:#4b003f;--voll-deep:#21002f;--voll-soft:#ffe7f0;--voll-line:#ead6e5;--text:#1f2b46;--muted:#6b7a99;--panel:rgba(255,255,255,.96);--green:#0b8f5d;--gold:#eab93f;--gray:#76727e;--danger:#c62828;--shadow:0 18px 46px rgba(75,0,63,.12)}*{box-sizing:border-box}body{margin:0;color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;background:radial-gradient(circle at 8% 8%,rgba(241,0,89,.13),transparent 28%),radial-gradient(circle at 88% 16%,rgba(75,0,63,.12),transparent 25%),linear-gradient(180deg,#fff8fb 0%,#f7eef5 100%);-webkit-font-smoothing:antialiased}button,input,select{font:inherit}.page{max-width:1320px;margin:0 auto;padding:18px 18px 38px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.brand-mark{width:202px;height:58px;border-radius:14px;background:#fff;border:1px solid rgba(241,0,89,.10);box-shadow:0 12px 28px rgba(241,0,89,.12);display:grid;place-items:center}.brand-logo{width:170px;max-height:42px;object-fit:contain}.powered{color:var(--muted);font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.chip{display:inline-flex;align-items:center;border-radius:999px;padding:10px 14px;background:#fff;border:1px solid var(--voll-line);color:var(--voll-purple);box-shadow:0 10px 24px rgba(75,0,63,.07);font-size:12px;font-weight:850}.hero{text-align:center;padding:8px 14px 34px}.hero h1{margin:0 0 10px;color:var(--voll-deep);font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.045em}.hero p{max-width:820px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.55}.regua-layout{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start}.profile-menu{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--voll-line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}.profile-btn{width:100%;min-height:70px;border:0;border-bottom:1px solid var(--voll-line);background:#fff;color:var(--voll-deep);display:flex;align-items:center;gap:14px;padding:14px 20px;text-align:left;cursor:pointer;font-size:15px;font-weight:850;transition:background .18s ease,color .18s ease}.profile-btn:last-child{border-bottom:0}.profile-btn:hover{background:#fff8fb}.profile-btn.active{color:#fff;background:linear-gradient(135deg,var(--voll-pink),var(--voll-purple))}.profile-icon{width:40px;height:40px;flex:0 0 40px;border-radius:999px;display:grid;place-items:center;background:var(--voll-soft);color:var(--voll-purple);font-size:18px;font-weight:900}.profile-btn.active .profile-icon{background:rgba(255,255,255,.20);color:#fff}.regua-panel{background:var(--panel);border:1px solid var(--voll-line);border-radius:24px;box-shadow:var(--shadow);padding:28px 34px 34px;overflow:hidden}.regua-panel h2{margin:0 0 12px;text-align:center;color:var(--voll-deep);font-size:clamp(24px,2.4vw,31px);line-height:1.15;letter-spacing:-.035em}.regua-panel p{max-width:780px;margin:0 auto 28px;text-align:center;color:var(--muted);font-size:16px;line-height:1.58}.panel-actions{display:flex;justify-content:center;margin:0 0 24px}.timeline-shell{width:100%;overflow-x:auto;padding:8px 0 4px}.timeline{position:relative;display:flex;align-items:flex-start;gap:0;min-width:860px;padding:0 8px}.timeline:before{content:"";position:absolute;top:18px;left:38px;right:38px;height:4px;background:linear-gradient(90deg,#76727e 0%,var(--voll-pink) 34%,var(--voll-purple) 60%,var(--gold) 100%);border-radius:999px;z-index:0}.step{position:relative;z-index:1;flex:1 0 88px;text-align:center;color:var(--voll-deep)}.dot{width:44px;height:36px;margin:0 auto 8px;border-radius:999px;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:950;box-shadow:0 8px 18px rgba(47,28,90,.12)}.gray{background:var(--gray)}.pink{background:var(--voll-pink)}.purple{background:var(--voll-purple)}.green{background:var(--green)}.gold{background:var(--gold)}.step-label{min-height:34px;padding:0 5px;color:var(--voll-deep);font-size:11px;line-height:1.18}.channel{display:flex;align-items:center;justify-content:center;gap:5px;min-height:24px;margin-top:6px;color:var(--voll-purple);font-size:12px;font-weight:850;flex-wrap:wrap}.channel-pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:3px 7px;background:var(--voll-soft);color:var(--voll-purple);border:1px solid #ffd1e0}.custom-editor{display:none;margin-top:30px;border-top:1px solid var(--voll-line);padding-top:22px}.custom-editor.is-open{display:block}.editor-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}.editor-head h3{margin:0;color:var(--voll-deep);font-size:22px;letter-spacing:-.035em}.editor-head p{margin:4px 0 0;text-align:left;font-size:13px;max-width:680px}.btn{border:0;border-radius:14px;min-height:40px;padding:9px 14px;font-size:13px;font-weight:850;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.btn-primary{color:#fff;background:linear-gradient(135deg,var(--voll-pink),var(--voll-purple));box-shadow:0 10px 22px rgba(241,0,89,.20)}.btn-secondary{color:var(--voll-purple);background:var(--voll-soft)}.custom-list{display:grid;gap:10px}.custom-row{display:grid;grid-template-columns:92px 150px 1fr 44px;gap:10px;align-items:center;padding:10px;border:1px solid var(--voll-line);border-radius:16px;background:#fff}.custom-row.is-locked{background:#fff8fb}.custom-row label{display:block;margin-bottom:5px;color:var(--muted);font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.custom-row input,.custom-row select{width:100%;min-height:38px;border:1px solid var(--voll-line);border-radius:12px;padding:8px 10px;outline:none;color:var(--text);background:#fff}.custom-row input:disabled{background:#f7f2f6;color:var(--voll-purple);font-weight:850}.custom-row input:focus,.custom-row select:focus{border-color:var(--voll-pink);box-shadow:0 0 0 4px rgba(241,0,89,.10)}.remove-btn{width:38px;height:38px;border-radius:12px;border:0;background:#fff0f0;color:var(--danger);font-weight:900;cursor:pointer}.remove-btn:disabled{cursor:not-allowed;opacity:.45;background:#f7f2f6;color:var(--muted)}.footnote{max-width:1000px;margin:24px auto 0;text-align:center;color:var(--muted);font-size:13px;line-height:1.45}@media(max-width:980px){.regua-layout{grid-template-columns:1fr;gap:22px}.profile-menu{display:grid;grid-template-columns:repeat(2,1fr)}.profile-btn{border-bottom:1px solid var(--voll-line)}.profile-btn:nth-child(odd){border-right:1px solid var(--voll-line)}.regua-panel{padding:26px 22px}.custom-row{grid-template-columns:1fr 1fr}.remove-btn{width:100%}}@media(max-width:620px){.page{padding:16px 12px 28px}.topbar,.brand{justify-content:center}.powered{width:100%;text-align:center}.brand-mark{width:178px;height:54px}.brand-logo{width:150px}.profile-menu{grid-template-columns:1fr}.profile-btn:nth-child(odd){border-right:0}.hero h1{font-size:34px}.custom-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <main class="page">
     <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark" aria-label="Logo Voll Bank"><img class="brand-logo" src="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779568546/vollbanklogo_c3m4ap.png" alt="Voll Bank" /></div>
-        <div class="powered">Powered by Voll Solutions</div>
-      </div>
+      <div class="brand"><div class="brand-mark" aria-label="Logo Voll Bank"><img class="brand-logo" src="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779568546/vollbanklogo_c3m4ap.png" alt="Voll Bank" /></div><div class="powered">Powered by Voll Solutions</div></div>
       <span class="chip">Mock conceitual · Régua inteligente</span>
     </header>
-
-    <section class="hero">
-      <h1>Como a Régua de Cobrança funciona?</h1>
-      <p>Acompanhe a IA no gerenciamento de cada etapa automaticamente ou personalize dias, canais e templates de contato conforme a estratégia da sua operação.</p>
-    </section>
-
-    <section class="regua-layout" aria-label="Demonstração da régua de cobrança por perfil">
+    <section class="hero"><h1>Régua inteligente de comunicação</h1><p>Acompanhe a IA no gerenciamento de cada etapa automaticamente ou personalize dias, canais e templates de contato conforme a estratégia da sua operação.</p></section>
+    <section class="regua-layout" aria-label="Demonstração da régua de comunicação por perfil">
       <aside class="profile-menu" id="profileMenu" aria-label="Perfis de cliente"></aside>
       <article class="regua-panel">
-        <h2 id="reguaTitle"></h2>
-        <p id="reguaDescription"></p>
+        <h2 id="reguaTitle"></h2><p id="reguaDescription"></p>
+        <div class="panel-actions"><button class="btn btn-secondary" type="button" id="customizeProfileBtn">Personalizar esta régua</button></div>
         <div class="timeline-shell"><div class="timeline" id="timeline"></div></div>
-        <div class="custom-editor" id="customEditor">
-          <div class="editor-head">
-            <div>
-              <h3>Configurar régua personalizada</h3>
-              <p>Para cada dia da jornada, selecione o canal de acionamento e o template que será usado na comunicação.</p>
-            </div>
-            <button class="btn btn-primary" type="button" id="addStepBtn">Adicionar dia</button>
-          </div>
-          <div class="custom-list" id="customList"></div>
-        </div>
+        <div class="custom-editor" id="customEditor"><div class="editor-head"><div><h3>Configurar régua personalizada</h3><p>Para cada dia da jornada, selecione o canal de acionamento e o template que será usado na comunicação. Emissão e dia do vencimento são etapas fixas.</p></div><button class="btn btn-primary" type="button" id="addStepBtn">Adicionar dia</button></div><div class="custom-list" id="customList"></div></div>
       </article>
     </section>
-
     <p class="footnote">Esta tela é um mock conceitual. Na versão produtiva, a régua personalizada seria salva por carteira, produto, perfil de risco e política de cobrança.</p>
   </main>
-
   <script>
-    const templates = {
-      EMAIL: ["E-mail preventivo", "E-mail de vencimento", "E-mail de proposta", "E-mail de notificação"],
-      SMS: ["SMS lembrete", "SMS reforço", "SMS urgência", "SMS última tentativa"],
-      WHATSAPP: ["WhatsApp cordial", "WhatsApp negociação", "WhatsApp link de pagamento", "WhatsApp última oferta"]
-    };
-
-    const reguaProfiles = {
-      novo: {
-        label: "Novo Cliente", icon: "♙", title: "Régua de Cobrança para Novos Clientes",
-        description: "Desenvolva um relacionamento positivo desde o início com estratégias suaves que incentivam o pagamento sem pressionar, garantindo uma boa primeira impressão.",
-        steps: [
-          { value: "-", label: "Emissão", action: "EMAIL", template: "E-mail preventivo", color: "gray" },
-          { value: "02", label: "Antes do vencimento", action: "EMAIL", template: "E-mail preventivo", color: "pink" },
-          { value: "0", label: "No dia do vencimento", action: "WHATSAPP", template: "WhatsApp cordial", color: "green" },
-          { value: "02", label: "Depois do vencimento", action: "EMAIL", template: "E-mail de vencimento", color: "gold" },
-          { value: "04", label: "", action: "WHATSAPP", template: "WhatsApp negociação", color: "gold" },
-          { value: "07", label: "", action: "EMAIL", template: "E-mail de proposta", color: "gold" },
-          { value: "10", label: "", action: "WHATSAPP", template: "WhatsApp link de pagamento", color: "gold" },
-          { value: "15", label: "Depois do vencimento", action: "EMAIL", template: "E-mail de notificação", color: "gold" }
-        ]
-      },
-      bom: {
-        label: "Bom Pagador", icon: "☺", title: "Régua de Cobrança para Bons Pagadores",
-        description: "Mantenha a confiança e a lealdade com uma cadência amigável e flexível que respeita o histórico de pontualidade deste cliente.",
-        steps: [
-          { value: "-", label: "Emissão", action: "EMAIL", template: "E-mail preventivo", color: "gray" },
-          { value: "02", label: "Antes do vencimento", action: "EMAIL", template: "E-mail preventivo", color: "pink" },
-          { value: "0", label: "No dia do vencimento", action: "WHATSAPP", template: "WhatsApp cordial", color: "green" },
-          { value: "02", label: "Depois do vencimento", action: "EMAIL", template: "E-mail de vencimento", color: "gold" }
-        ]
-      },
-      duvidoso: {
-        label: "Pagador Duvidoso", icon: "☻", title: "Régua de Cobrança para Pagador Duvidoso",
-        description: "Implemente abordagens assertivas com uma cadência mais frequente para assegurar os pagamentos e minimizar riscos de inadimplência.",
-        steps: [
-          { value: "-", label: "Emissão", action: "EMAIL", template: "E-mail preventivo", color: "gray" },
-          { value: "07", label: "Antes do vencimento", action: "EMAIL", template: "E-mail preventivo", color: "pink" },
-          { value: "02", label: "", action: "SMS", template: "SMS lembrete", color: "gold" },
-          { value: "0", label: "No dia do vencimento", action: "WHATSAPP", template: "WhatsApp cordial", color: "green" },
-          { value: "02", label: "", action: "WHATSAPP", template: "WhatsApp negociação", color: "gold" },
-          { value: "07", label: "", action: "SMS", template: "SMS reforço", color: "gold" },
-          { value: "15", label: "", action: "EMAIL", template: "E-mail de proposta", color: "gold" },
-          { value: "20", label: "", action: "WHATSAPP", template: "WhatsApp link de pagamento", color: "gold" },
-          { value: "30", label: "Depois do vencimento", action: "EMAIL", template: "E-mail de notificação", color: "gold" }
-        ]
-      },
-      mau: {
-        label: "Mau Pagador", icon: "☹", title: "Régua de Cobrança para Mau Pagador",
-        description: "Aplique uma cobrança estruturada para recuperar débitos, com comunicação clara e escalonamento progressivo.",
-        steps: [
-          { value: "-", label: "Emissão", action: "EMAIL", template: "E-mail preventivo", color: "gray" },
-          { value: "02", label: "Antes do vencimento", action: "SMS", template: "SMS lembrete", color: "pink" },
-          { value: "0", label: "No dia do vencimento", action: "WHATSAPP", template: "WhatsApp negociação", color: "green" },
-          { value: "02", label: "", action: "SMS", template: "SMS reforço", color: "gold" },
-          { value: "04", label: "", action: "WHATSAPP", template: "WhatsApp link de pagamento", color: "gold" },
-          { value: "07", label: "", action: "EMAIL", template: "E-mail de notificação", color: "gold" },
-          { value: "10", label: "", action: "SMS", template: "SMS urgência", color: "gold" },
-          { value: "15", label: "Depois do vencimento", action: "EMAIL", template: "E-mail de notificação", color: "gold" }
-        ]
-      },
-      personalizada: {
-        label: "Régua Personalizada", icon: "⚙", title: "Régua de Cobrança Personalizada",
-        description: "Configure manualmente os dias, canais de acionamento e templates de comunicação para adaptar a régua à política da sua operação.",
-        custom: true,
-        steps: [
-          { value: "-2", label: "Antes do vencimento", action: "EMAIL", template: "E-mail preventivo", color: "pink" },
-          { value: "0", label: "No dia do vencimento", action: "WHATSAPP", template: "WhatsApp cordial", color: "green" },
-          { value: "3", label: "Depois do vencimento", action: "SMS", template: "SMS reforço", color: "gold" },
-          { value: "7", label: "Depois do vencimento", action: "WHATSAPP", template: "WhatsApp link de pagamento", color: "gold" }
-        ]
-      }
-    };
-
-    let currentProfile = "novo";
-
-    function actionLabel(action) {
-      if (action === "EMAIL") return "E-mail";
-      if (action === "SMS") return "SMS";
-      return "WhatsApp";
-    }
-
-    function dayLabel(value) {
-      const day = Number(value);
-      if (Number.isNaN(day)) return "Emissão";
-      if (day < 0) return "Antes do vencimento";
-      if (day === 0) return "No dia do vencimento";
-      return "Depois do vencimento";
-    }
-
-    function dotValue(value) {
-      if (String(value) === "-") return "-";
-      const day = Number(value);
-      if (Number.isNaN(day)) return value;
-      return String(Math.abs(day)).padStart(2, "0");
-    }
-
-    function dotColor(value) {
-      const day = Number(value);
-      if (Number.isNaN(day)) return "gray";
-      if (day < 0) return "pink";
-      if (day === 0) return "green";
-      return "gold";
-    }
-
-    function renderProfileMenu() {
-      const menu = document.getElementById("profileMenu");
-      menu.innerHTML = Object.entries(reguaProfiles).map(([key, profile]) => `
-        <button class="profile-btn ${key === currentProfile ? "active" : ""}" type="button" data-profile="${key}">
-          <span class="profile-icon" aria-hidden="true">${profile.icon}</span>
-          <span>${profile.label}</span>
-        </button>
-      `).join("");
-      menu.querySelectorAll(".profile-btn").forEach((button) => {
-        button.addEventListener("click", () => {
-          currentProfile = button.dataset.profile;
-          renderRegua();
-        });
-      });
-    }
-
-    function renderTimeline(profile) {
-      return profile.steps.map((step) => `
-        <div class="step">
-          <div class="dot ${step.color || dotColor(step.value)}">${dotValue(step.value)}</div>
-          <div class="step-label">${step.label || dayLabel(step.value)}</div>
-          <div class="channel"><span class="channel-pill">${actionLabel(step.action)}</span></div>
-        </div>
-      `).join("");
-    }
-
-    function templateOptions(action, selectedTemplate) {
-      return templates[action].map((template) => `<option value="${template}" ${template === selectedTemplate ? "selected" : ""}>${template}</option>`).join("");
-    }
-
-    function renderCustomEditor(profile) {
-      const editor = document.getElementById("customEditor");
-      const list = document.getElementById("customList");
-      editor.classList.toggle("is-open", Boolean(profile.custom));
-      if (!profile.custom) return;
-      list.innerHTML = profile.steps.map((step, index) => `
-        <div class="custom-row" data-index="${index}">
-          <div><label>Dia</label><input type="number" value="${step.value}" data-field="value" /></div>
-          <div><label>Acionamento</label><select data-field="action"><option value="EMAIL" ${step.action === "EMAIL" ? "selected" : ""}>E-mail</option><option value="SMS" ${step.action === "SMS" ? "selected" : ""}>SMS</option><option value="WHATSAPP" ${step.action === "WHATSAPP" ? "selected" : ""}>WhatsApp</option></select></div>
-          <div><label>Template</label><select data-field="template">${templateOptions(step.action, step.template)}</select></div>
-          <button class="remove-btn" type="button" title="Remover etapa">×</button>
-        </div>
-      `).join("");
-      bindCustomEditor();
-    }
-
-    function bindCustomEditor() {
-      const profile = reguaProfiles.personalizada;
-      document.querySelectorAll(".custom-row").forEach((row) => {
-        const index = Number(row.dataset.index);
-        row.querySelectorAll("input, select").forEach((input) => {
-          input.addEventListener("change", () => {
-            const field = input.dataset.field;
-            profile.steps[index][field] = input.value;
-            if (field === "value") profile.steps[index].label = dayLabel(input.value);
-            if (field === "action") {
-              profile.steps[index].template = templates[input.value][0];
-              renderRegua();
-              return;
-            }
-            renderRegua();
-          });
-        });
-        row.querySelector(".remove-btn").addEventListener("click", () => {
-          profile.steps.splice(index, 1);
-          renderRegua();
-        });
-      });
-    }
-
-    function renderRegua() {
-      const profile = reguaProfiles[currentProfile];
-      renderProfileMenu();
-      document.getElementById("reguaTitle").textContent = profile.title;
-      document.getElementById("reguaDescription").textContent = profile.description;
-      document.getElementById("timeline").innerHTML = renderTimeline(profile);
-      renderCustomEditor(profile);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      renderRegua();
-      document.getElementById("addStepBtn").addEventListener("click", () => {
-        reguaProfiles.personalizada.steps.push({ value: "10", label: "Depois do vencimento", action: "EMAIL", template: "E-mail de proposta", color: "gold" });
-        currentProfile = "personalizada";
-        renderRegua();
-      });
-    });
+    const templates={EMAIL:["E-mail preventivo","E-mail de vencimento","E-mail de proposta","E-mail de notificação"],SMS:["SMS lembrete","SMS reforço","SMS urgência","SMS última tentativa"],WHATSAPP:["WhatsApp cordial","WhatsApp negociação","WhatsApp link de pagamento","WhatsApp última oferta"]};
+    const baseProfiles={novo:{label:"Novo Cliente",icon:"♙",title:"Régua de Comunicação para Novos Clientes",description:"Desenvolva um relacionamento positivo desde o início com estratégias suaves que incentivam o pagamento sem pressionar, garantindo uma boa primeira impressão.",steps:[{value:"E",label:"Emissão",action:"EMAIL",template:"E-mail preventivo",color:"gray",locked:true},{value:"-2",label:"Antes do vencimento",action:"EMAIL",template:"E-mail preventivo",color:"pink"},{value:"0",label:"Dia do vencimento",action:"WHATSAPP",template:"WhatsApp cordial",color:"green",locked:true},{value:"+2",label:"Depois do vencimento",action:"EMAIL",template:"E-mail de vencimento",color:"gold"},{value:"+4",label:"",action:"WHATSAPP",template:"WhatsApp negociação",color:"gold"},{value:"+7",label:"",action:"EMAIL",template:"E-mail de proposta",color:"gold"},{value:"+10",label:"",action:"WHATSAPP",template:"WhatsApp link de pagamento",color:"gold"},{value:"+15",label:"Depois do vencimento",action:"EMAIL",template:"E-mail de notificação",color:"gold"}]},bom:{label:"Bom Pagador",icon:"☺",title:"Régua de Comunicação para Bons Pagadores",description:"Mantenha a confiança e a lealdade com uma cadência amigável e flexível que respeita o histórico de pontualidade deste cliente.",steps:[{value:"E",label:"Emissão",action:"EMAIL",template:"E-mail preventivo",color:"gray",locked:true},{value:"-2",label:"Antes do vencimento",action:"EMAIL",template:"E-mail preventivo",color:"pink"},{value:"0",label:"Dia do vencimento",action:"WHATSAPP",template:"WhatsApp cordial",color:"green",locked:true},{value:"+2",label:"Depois do vencimento",action:"EMAIL",template:"E-mail de vencimento",color:"gold"}]},duvidoso:{label:"Pagador Duvidoso",icon:"☻",title:"Régua de Comunicação para Pagador Duvidoso",description:"Implemente abordagens assertivas com uma cadência mais frequente para assegurar os pagamentos e minimizar riscos de inadimplência.",steps:[{value:"E",label:"Emissão",action:"EMAIL",template:"E-mail preventivo",color:"gray",locked:true},{value:"-7",label:"Antes do vencimento",action:"EMAIL",template:"E-mail preventivo",color:"pink"},{value:"-2",label:"",action:"SMS",template:"SMS lembrete",color:"gold"},{value:"0",label:"Dia do vencimento",action:"WHATSAPP",template:"WhatsApp cordial",color:"green",locked:true},{value:"+2",label:"",action:"WHATSAPP",template:"WhatsApp negociação",color:"gold"},{value:"+7",label:"",action:"SMS",template:"SMS reforço",color:"gold"},{value:"+15",label:"",action:"EMAIL",template:"E-mail de proposta",color:"gold"},{value:"+20",label:"",action:"WHATSAPP",template:"WhatsApp link de pagamento",color:"gold"},{value:"+30",label:"Depois do vencimento",action:"EMAIL",template:"E-mail de notificação",color:"gold"}]},mau:{label:"Mau Pagador",icon:"☹",title:"Régua de Comunicação para Mau Pagador",description:"Aplique uma comunicação estruturada para recuperar débitos, com contato claro e escalonamento progressivo.",steps:[{value:"E",label:"Emissão",action:"EMAIL",template:"E-mail preventivo",color:"gray",locked:true},{value:"-2",label:"Antes do vencimento",action:"SMS",template:"SMS lembrete",color:"pink"},{value:"0",label:"Dia do vencimento",action:"WHATSAPP",template:"WhatsApp negociação",color:"green",locked:true},{value:"+2",label:"",action:"SMS",template:"SMS reforço",color:"gold"},{value:"+4",label:"",action:"WHATSAPP",template:"WhatsApp link de pagamento",color:"gold"},{value:"+7",label:"",action:"EMAIL",template:"E-mail de notificação",color:"gold"},{value:"+10",label:"",action:"SMS",template:"SMS urgência",color:"gold"},{value:"+15",label:"Depois do vencimento",action:"EMAIL",template:"E-mail de notificação",color:"gold"}]} };
+    const reguaProfiles={...baseProfiles,personalizada:{label:"Régua Personalizada",icon:"⚙",title:"Régua de Comunicação Personalizada",description:"Configure manualmente os dias, canais de acionamento e templates de comunicação para adaptar a régua à política da sua operação.",custom:true,steps:[{value:"E",label:"Emissão",action:"EMAIL",template:"E-mail preventivo",color:"gray",locked:true},{value:"-2",label:"Antes do vencimento",action:"EMAIL",template:"E-mail preventivo",color:"pink"},{value:"0",label:"Dia do vencimento",action:"WHATSAPP",template:"WhatsApp cordial",color:"green",locked:true},{value:"+3",label:"Depois do vencimento",action:"SMS",template:"SMS reforço",color:"gold"},{value:"+7",label:"Depois do vencimento",action:"WHATSAPP",template:"WhatsApp link de pagamento",color:"gold"}]}};
+    let currentProfile="novo";
+    function cloneSteps(steps){return steps.map(s=>({...s}))}
+    function actionLabel(a){return a==="EMAIL"?"E-mail":a==="SMS"?"SMS":"WhatsApp"}
+    function normalizeDayValue(value){const raw=String(value).trim().toUpperCase();if(raw==="E"||raw==="-")return"E";const n=Number(raw.replace("+",""));if(Number.isNaN(n))return raw;if(n>0)return`+${n}`;if(n<0)return`${n}`;return"0"}
+    function dayLabel(value){const v=normalizeDayValue(value);if(v==="E")return"Emissão";const n=Number(v.replace("+",""));if(n<0)return"Antes do vencimento";if(n===0)return"Dia do vencimento";return"Depois do vencimento"}
+    function dotColor(value){const v=normalizeDayValue(value);if(v==="E")return"gray";const n=Number(v.replace("+",""));if(n<0)return"pink";if(n===0)return"green";return"gold"}
+    function renderProfileMenu(){const menu=document.getElementById("profileMenu");menu.innerHTML=Object.entries(reguaProfiles).map(([key,p])=>`<button class="profile-btn ${key===currentProfile?"active":""}" type="button" data-profile="${key}"><span class="profile-icon" aria-hidden="true">${p.icon}</span><span>${p.label}</span></button>`).join("");menu.querySelectorAll(".profile-btn").forEach(btn=>btn.addEventListener("click",()=>{currentProfile=btn.dataset.profile;renderRegua()}))}
+    function renderTimeline(profile){return profile.steps.map(step=>`<div class="step"><div class="dot ${step.color||dotColor(step.value)}">${normalizeDayValue(step.value)}</div><div class="step-label">${step.label||dayLabel(step.value)}</div><div class="channel"><span class="channel-pill">${actionLabel(step.action)}</span></div></div>`).join("")}
+    function templateOptions(action,selected){return templates[action].map(t=>`<option value="${t}" ${t===selected?"selected":""}>${t}</option>`).join("")}
+    function customizeCurrentProfile(){const source=reguaProfiles[currentProfile];reguaProfiles.personalizada.steps=cloneSteps(source.steps).map(step=>({...step,value:normalizeDayValue(step.value),label:dayLabel(step.value),color:dotColor(step.value),locked:normalizeDayValue(step.value)==="E"||normalizeDayValue(step.value)==="0"}));currentProfile="personalizada";renderRegua()}
+    function renderCustomEditor(profile){const editor=document.getElementById("customEditor"),list=document.getElementById("customList");editor.classList.toggle("is-open",Boolean(profile.custom));if(!profile.custom)return;list.innerHTML=profile.steps.map((step,index)=>{const locked=step.locked||normalizeDayValue(step.value)==="E"||normalizeDayValue(step.value)==="0";return`<div class="custom-row ${locked?"is-locked":""}" data-index="${index}"><div><label>Dia</label><input type="text" value="${normalizeDayValue(step.value)}" data-field="value" ${locked?"disabled":""}></div><div><label>Acionamento</label><select data-field="action"><option value="EMAIL" ${step.action==="EMAIL"?"selected":""}>E-mail</option><option value="SMS" ${step.action==="SMS"?"selected":""}>SMS</option><option value="WHATSAPP" ${step.action==="WHATSAPP"?"selected":""}>WhatsApp</option></select></div><div><label>Template</label><select data-field="template">${templateOptions(step.action,step.template)}</select></div><button class="remove-btn" type="button" ${locked?"disabled":""}>×</button></div>`}).join("");bindCustomEditor()}
+    function bindCustomEditor(){const p=reguaProfiles.personalizada;document.querySelectorAll(".custom-row").forEach(row=>{const i=Number(row.dataset.index);row.querySelectorAll("input,select").forEach(input=>input.addEventListener("change",()=>{const f=input.dataset.field;if(f==="value"){p.steps[i].value=normalizeDayValue(input.value);p.steps[i].label=dayLabel(input.value);p.steps[i].color=dotColor(input.value)}else{p.steps[i][f]=input.value}if(f==="action")p.steps[i].template=templates[input.value][0];renderRegua()}));row.querySelector(".remove-btn").addEventListener("click",()=>{if(p.steps[i].locked)return;p.steps.splice(i,1);renderRegua()})})}
+    function renderRegua(){const p=reguaProfiles[currentProfile];renderProfileMenu();document.getElementById("reguaTitle").textContent=p.title;document.getElementById("reguaDescription").textContent=p.description;document.getElementById("timeline").innerHTML=renderTimeline(p);document.getElementById("customizeProfileBtn").style.display=p.custom?"none":"inline-flex";renderCustomEditor(p)}
+    document.addEventListener("DOMContentLoaded",()=>{renderRegua();document.getElementById("customizeProfileBtn").addEventListener("click",customizeCurrentProfile);document.getElementById("addStepBtn").addEventListener("click",()=>{reguaProfiles.personalizada.steps.push({value:"+10",label:"Depois do vencimento",action:"EMAIL",template:"E-mail de proposta",color:"gold"});currentProfile="personalizada";renderRegua()})});
   </script>
 </body>
 </html>
