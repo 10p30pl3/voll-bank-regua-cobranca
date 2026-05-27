@@ -3,57 +3,469 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voll Bank | Régua Inteligente</title>
+  <title>Voll Bank | Régua de Cobrança</title>
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779569197/ChatGPT_Image_23_de_mai._de_2026_17_46_20_siksvl.png" />
   <style>
-    :root{--p:#f10059;--d:#21002f;--m:#6b7a99;--l:#ead6e5;--s:#ffe7f0;--ok:#0b6b47;--okb:#e9fbf4;--w:#b45309;--wb:#fff4e8;--b:#c62828;--bb:#fff0f0;--sh:0 16px 42px rgba(75,0,63,.10)}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:#1f2b46;background:linear-gradient(180deg,#fff8fb,#f7eef5)}.page{max-width:1240px;margin:0 auto;padding:14px 16px 26px}.top,.head,.actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.top{margin-bottom:14px}.brand{display:flex;align-items:center;gap:12px}.logoBox{width:202px;height:58px;border-radius:14px;background:#fff;display:grid;place-items:center;box-shadow:0 12px 28px rgba(241,0,89,.12);border:1px solid rgba(241,0,89,.08)}.logo{width:170px;max-height:42px;object-fit:contain}.powered{font-size:11px;color:var(--m);font-weight:850;letter-spacing:.12em;text-transform:uppercase}.card{background:rgba(255,255,255,.96);border:1px solid rgba(234,214,229,.95);border-radius:24px;box-shadow:var(--sh);padding:22px;margin-bottom:16px}.hero{position:relative;overflow:hidden;padding:24px}.hero:before{content:"";position:absolute;right:-90px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(241,0,89,.16),rgba(75,0,63,.08) 45%,transparent 72%)}.eyebrow,.pill{display:inline-flex;border-radius:999px;padding:8px 12px;background:var(--s);color:#4b003f;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.pill{background:#fff;border:1px solid var(--l);font-size:12px;text-transform:none;letter-spacing:0}.hero>*{position:relative;z-index:1}.hero h1{margin:14px 0 10px;color:var(--d);font-size:clamp(28px,3vw,40px);line-height:1.02;letter-spacing:-.055em;max-width:820px}.hero p,.card p{margin:4px 0 0;color:var(--m);font-size:14px;line-height:1.45;max-width:860px}.kpis,.tabs,.bulk,.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.kpis{margin-top:18px}.kpi,.tab,.box{background:#fff;border:1px solid var(--l);border-radius:18px;padding:14px}.kpi span,.tab small,.box span,th{display:block;color:var(--m);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;margin-bottom:6px}.kpi strong,.box strong{color:var(--d);font-size:19px}.card h3{margin:0;color:var(--d);font-size:23px;letter-spacing:-.04em}.btn{border:0;border-radius:14px;min-height:40px;padding:9px 14px;font-size:13px;font-weight:850;cursor:pointer;white-space:nowrap}.primary{color:#fff;background:linear-gradient(135deg,var(--p),#4b003f);box-shadow:0 10px 22px rgba(241,0,89,.22)}.secondary{color:#4b003f;background:var(--s)}.ghost{color:#4b003f;background:#fff;border:1px solid var(--l)}.tab{text-align:left;cursor:pointer;min-height:92px}.tab.active{border-color:rgba(241,0,89,.55);box-shadow:0 12px 26px rgba(241,0,89,.12)}.tab strong{display:block;color:var(--d);font-size:16px}.tab span{display:block;color:var(--m);font-size:12px;line-height:1.35;margin-top:5px}.timeline{display:flex;gap:10px;overflow:auto;background:#fff;border:1px solid var(--l);border-radius:22px;padding:16px;margin-top:14px}.node{min-width:130px;flex:1;padding:13px 12px;border-radius:17px;background:#fff8fb;border:1px solid var(--l)}.node strong{display:block;color:var(--d);font-size:15px;line-height:1.15}.node em{display:inline-flex;margin-top:10px;padding:6px 8px;border-radius:999px;font-style:normal;font-size:11px;font-weight:900;background:#fff;color:#4b003f;border:1px solid var(--l)}.tag{display:inline-flex;border-radius:999px;padding:6px 9px;font-size:11px;font-weight:900;white-space:nowrap}.ok{background:var(--okb);color:var(--ok)}.warn{background:var(--wb);color:var(--w)}.bad{background:var(--bb);color:var(--b)}.info{background:var(--s);color:#4b003f}.table{overflow:auto;border-radius:18px;border:1px solid var(--l);background:#fff;margin-top:14px}table{width:100%;border-collapse:collapse;min-width:840px}th,td{text-align:left;padding:12px 13px;border-bottom:1px solid var(--l);font-size:13px;vertical-align:top}th{background:#fff8fb}.name{font-weight:900;color:var(--d)}.mini{display:block;color:var(--m);font-size:12px;margin-top:3px}.check{width:18px;height:18px;accent-color:var(--p)}pre{margin:0;min-height:170px;max-height:280px;overflow:auto;border-radius:16px;background:var(--d);color:#ffe7f0;padding:16px;white-space:pre-wrap;font-size:12px;line-height:1.5}.debug{display:none}.debug.open{display:block}@media(max-width:980px){.kpis,.tabs,.bulk,.summary{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.kpis,.tabs,.bulk,.summary{grid-template-columns:1fr}.logoBox{width:178px}.logo{width:150px}}
+    :root {
+      --bg: #fbf8ff;
+      --panel: #ffffff;
+      --purple: #6f2bd9;
+      --purple-dark: #2f1c5a;
+      --purple-soft: #f0e8ff;
+      --muted: #6b7280;
+      --line: #ece7f3;
+      --gold: #efc447;
+      --green: #2f9b62;
+      --gray: #77737d;
+      --shadow: 0 18px 48px rgba(74, 24, 99, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--purple-dark);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 88% 16%, rgba(111,43,217,.10), transparent 26%),
+        radial-gradient(circle at 8% 88%, rgba(241,0,89,.07), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button { font: inherit; }
+
+    .page {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 28px 24px 42px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 202px;
+      height: 58px;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 12px 28px rgba(111,43,217,.10);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+    }
+
+    .brand-logo {
+      width: 170px;
+      max-height: 42px;
+      object-fit: contain;
+    }
+
+    .powered {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--purple-dark);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(74, 24, 99, 0.06);
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 8px 16px 38px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      color: var(--purple-dark);
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .regua-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .profile-menu {
+      display: flex;
+      flex-direction: column;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      align-self: start;
+    }
+
+    .profile-btn {
+      width: 100%;
+      min-height: 68px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      color: var(--purple-dark);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 850;
+      transition: background .18s ease, color .18s ease, transform .18s ease;
+    }
+
+    .profile-btn:last-child { border-bottom: 0; }
+    .profile-btn:hover { background: #faf7ff; }
+
+    .profile-btn.active {
+      background: linear-gradient(180deg, #7c3bd8, #6727c2);
+      color: #fff;
+    }
+
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 40px;
+      background: var(--purple-soft);
+      color: var(--purple);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .profile-btn.active .profile-icon {
+      background: rgba(255,255,255,.20);
+      color: #fff;
+    }
+
+    .regua-panel {
+      min-height: 276px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 22px 40px 34px;
+      overflow: hidden;
+    }
+
+    .regua-panel h2 {
+      margin: 0 0 12px;
+      text-align: center;
+      color: var(--purple-dark);
+      font-size: clamp(24px, 2.4vw, 30px);
+      line-height: 1.16;
+      letter-spacing: -0.035em;
+    }
+
+    .regua-panel p {
+      max-width: 760px;
+      margin: 0 auto 38px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.58;
+    }
+
+    .timeline-shell {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+      padding: 8px 0 4px;
+    }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      min-width: 860px;
+      padding: 0 8px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 38px;
+      right: 38px;
+      height: 4px;
+      background: linear-gradient(90deg, #7f7489 0%, #6f2bd9 34%, #7f54d9 58%, #efc447 100%);
+      border-radius: 999px;
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+      flex: 1 0 88px;
+      text-align: center;
+      color: var(--purple-dark);
+    }
+
+    .dot {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 8px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 950;
+      box-shadow: 0 8px 18px rgba(47,28,90,.12);
+    }
+
+    .dot.gray { background: var(--gray); }
+    .dot.purple { background: var(--purple); }
+    .dot.green { background: var(--green); }
+    .dot.gold { background: var(--gold); }
+
+    .step-label {
+      min-height: 34px;
+      padding: 0 5px;
+      color: var(--purple-dark);
+      font-size: 11px;
+      line-height: 1.18;
+    }
+
+    .channel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 22px;
+      margin-top: 6px;
+      color: var(--purple);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .channel span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 14px;
+    }
+
+    .footnote {
+      max-width: 1000px;
+      margin: 24px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 980px) {
+      .regua-layout { grid-template-columns: 1fr; gap: 22px; }
+      .profile-menu { display: grid; grid-template-columns: repeat(2, 1fr); }
+      .profile-btn { border-bottom: 1px solid var(--line); }
+      .profile-btn:nth-child(odd) { border-right: 1px solid var(--line); }
+      .hero p { font-size: 16px; }
+      .regua-panel { padding: 26px 22px; }
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 16px 12px 28px; }
+      .topbar { justify-content: center; }
+      .brand { justify-content: center; flex-wrap: wrap; }
+      .powered { width: 100%; text-align: center; }
+      .brand-mark { width: 178px; height: 54px; }
+      .brand-logo { width: 150px; }
+      .profile-menu { grid-template-columns: 1fr; }
+      .profile-btn:nth-child(odd) { border-right: 0; }
+      .hero h1 { font-size: 34px; }
+      .hero { padding-bottom: 26px; }
+    }
   </style>
 </head>
 <body>
   <main class="page">
-    <header class="top">
-      <div class="brand"><div class="logoBox"><img class="logo" src="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779568546/vollbanklogo_c3m4ap.png" alt="Voll Bank" /></div><div class="powered">Powered by Voll Solutions</div></div>
-      <span class="pill">Painel de ações em lote</span>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-label="Logo Voll Bank">
+          <img class="brand-logo" src="https://res.cloudinary.com/db62imdmn/image/upload/q_auto/f_auto/v1779568546/vollbanklogo_c3m4ap.png" alt="Voll Bank" />
+        </div>
+        <div class="powered">Powered by Voll Solutions</div>
+      </div>
+      <span class="chip">Mock conceitual · Régua inteligente</span>
     </header>
 
-    <section class="card hero">
-      <div class="eyebrow">Régua inteligente</div>
-      <h1>Acionamentos em lote por segmento da carteira</h1>
-      <p>O painel foi simplificado para operação em massa: escolha o perfil, selecione os clientes elegíveis e execute a próxima ação coletiva da régua.</p>
-      <div class="kpis"><div class="kpi"><span>Carteira</span><strong id="kpiClients">0</strong></div><div class="kpi"><span>Elegíveis</span><strong id="kpiEligible">0</strong></div><div class="kpi"><span>Valor elegível</span><strong id="kpiAmount">R$ 0</strong></div><div class="kpi"><span>Canal líder</span><strong>WhatsApp</strong></div></div>
+    <section class="hero">
+      <h1>Como a Régua de Cobrança funciona?</h1>
+      <p>Acompanhe a IA no gerenciamento de cada etapa automaticamente ou personalize o contato com seus clientes a partir da sua experiência.</p>
     </section>
 
-    <section class="card">
-      <div class="head"><div><h3>Como a régua funciona</h3><p>Selecione um segmento para visualizar a cadência coletiva.</p></div><div class="actions"><button id="selectEligible" class="btn secondary">Selecionar elegíveis</button><button id="clear" class="btn ghost">Limpar seleção</button></div></div>
-      <div id="tabs" class="tabs"></div>
-      <div id="timeline" class="timeline"></div>
-      <div class="bulk" style="margin-top:14px"><div class="box"><strong>E-mail</strong><p>Formalização e registro.</p></div><div class="box"><strong>WhatsApp</strong><p>Negociação e regularização.</p></div><div class="box"><strong>SMS</strong><p>Reforço objetivo.</p></div><div class="box"><strong>Fila humana</strong><p>Tratativa operacional.</p></div></div>
+    <section class="regua-layout" aria-label="Demonstração da régua de cobrança por perfil">
+      <aside class="profile-menu" id="profileMenu" aria-label="Perfis de cliente"></aside>
+
+      <article class="regua-panel">
+        <h2 id="reguaTitle"></h2>
+        <p id="reguaDescription"></p>
+        <div class="timeline-shell" aria-label="Linha do tempo da régua de cobrança">
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </article>
     </section>
 
-    <section class="card">
-      <div class="head"><div><h3>Execução em lote</h3><p>Ações coletivas para os clientes selecionados.</p></div><div class="actions"><button id="email" class="btn secondary">Enviar e-mail em lote</button><button id="sms" class="btn secondary">Enviar SMS em lote</button><button id="whatsapp" class="btn primary">Enviar WhatsApp em lote</button></div></div>
-      <div class="summary"><div class="box"><span>Selecionados</span><strong id="selectedCount">0</strong></div><div class="box"><span>Valor selecionado</span><strong id="selectedAmount">R$ 0</strong></div><div class="box"><span>Próxima etapa</span><strong id="nextStep">-</strong></div><div class="box"><span>Status</span><strong id="batchStatus">Pronto</strong></div></div>
-      <div class="table"><table><thead><tr><th><input id="selectAll" class="check" type="checkbox"></th><th>Cliente</th><th>Segmento</th><th>Atraso</th><th>Valor</th><th>Último evento</th><th>Próxima etapa</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
-    </section>
-
-    <section class="card">
-      <div class="head"><div><h3>Tracking agregado</h3><p>Eventos retornam para a régua e alimentam o próximo lote.</p></div><button id="debugBtn" class="btn secondary">Mostrar painel técnico</button></div>
-      <div class="table"><table><thead><tr><th>Evento</th><th>Captura</th><th>Confiabilidade</th><th>Uso no lote</th></tr></thead><tbody><tr><td><b>EMAIL_OPENED</b></td><td>Pixel</td><td><span class="tag warn">Média</span></td><td>Sinal agregado</td></tr><tr><td><b>EMAIL_CLICKED</b></td><td>Link rastreável</td><td><span class="tag ok">Alta</span></td><td>Move para negociação</td></tr><tr><td><b>WHATSAPP_STARTED</b></td><td>Redirect</td><td><span class="tag ok">Alta</span></td><td>Prioriza follow-up</td></tr><tr><td><b>PAYMENT_DONE</b></td><td>Webhook</td><td><span class="tag ok">Alta</span></td><td>Remove do lote</td></tr></tbody></table></div>
-    </section>
-
-    <section id="debug" class="card debug"><div class="head"><div><h3>Painel técnico</h3><p>Payload agregado do último lote.</p></div><button id="copy" class="btn secondary">Copiar body</button></div><pre id="log">Aguardando execução em lote...</pre></section>
+    <p class="footnote">Esta tela é uma representação conceitual da régua. As etapas, canais e prazos podem ser personalizados por carteira, produto, perfil de risco e política de cobrança.</p>
   </main>
+
   <script>
-    const profiles={new:{label:"Novo Cliente",badge:"Relacionamento",desc:"Primeira experiência, tom leve.",steps:[[-2,"Lembrete preventivo","E-mail"],[0,"Mensagem cordial","WhatsApp"],[2,"Aviso leve","E-mail"],[7,"Oferta de ajuda","WhatsApp"]]},good:{label:"Bom Pagador",badge:"Confiança",desc:"Preserva relacionamento.",steps:[[-2,"Lembrete amigável","E-mail"],[0,"Confirmação cordial","WhatsApp"],[2,"Aviso de pendência","E-mail"]]},uncertain:{label:"Pagador Duvidoso",badge:"Atenção",desc:"Cadência mais frequente.",steps:[[-7,"Alerta preventivo","E-mail"],[-2,"Lembrete curto","SMS"],[0,"Confirmação","WhatsApp"],[7,"Reforço","SMS"],[15,"Proposta","E-mail"]]},high:{label:"Alto Risco",badge:"Recuperação",desc:"Fluxo direto e escalonamento.",steps:[[-2,"Alerta","SMS"],[0,"Cobrança direta","WhatsApp"],[2,"Reforço","SMS"],[7,"Notificação","E-mail"],[30,"Fila humana","Operação"]]}};
-    const clients=[{id:"c1",name:"Cliente 001",segment:"uncertain",days:18,amount:2840,last:"EMAIL_OPENED",status:"OPEN"},{id:"c2",name:"Cliente 002",segment:"new",days:3,amount:690,last:"NONE",status:"OPEN"},{id:"c3",name:"Cliente 003",segment:"high",days:42,amount:7210,last:"SMS_CLICKED",status:"OPEN"},{id:"c4",name:"Cliente 004",segment:"good",days:2,amount:1520,last:"EMAIL_SENT",status:"OPEN"},{id:"c5",name:"Cliente 005",segment:"high",days:63,amount:9800,last:"WHATSAPP_STARTED",status:"QUEUE"},{id:"c6",name:"Cliente 006",segment:"uncertain",days:21,amount:4300,last:"WHATSAPP_SENT",status:"OPEN"}];
-    let profile="uncertain", selected=new Set(), lastPayload=null;const el=id=>document.getElementById(id), brl=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n);
-    function stepFor(c){let s=profiles[c.segment].steps[0];profiles[c.segment].steps.forEach(x=>{if(c.days>=x[0])s=x});return s}
-    function status(c){if(c.status==="QUEUE")return["Fila humana","bad"];if(c.days>=30)return["Crítico","bad"];if(c.days>=10)return["Em cobrança","warn"];return["Preventivo","info"]}
-    function eligible(){return clients.filter(c=>c.segment===profile&&c.status!=="PAID")}
-    function selectedRows(){return clients.filter(c=>selected.has(c.id))}
-    function render(){el("tabs").innerHTML=Object.entries(profiles).map(([id,p])=>`<button class="tab ${id===profile?"active":""}" data-p="${id}"><small>${p.badge}</small><strong>${p.label}</strong><span>${p.desc}</span></button>`).join("");document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{profile=b.dataset.p;selected.clear();render()});el("timeline").innerHTML=profiles[profile].steps.map(s=>`<div class="node"><small>${s[0]<0?Math.abs(s[0])+" antes":s[0]===0?"Dia 0":"D+"+s[0]}</small><strong>${s[1]}</strong><em>${s[2]}</em></div>`).join("");el("rows").innerHTML=clients.map(c=>{const st=status(c), step=stepFor(c);return `<tr><td><input class="check row" data-id="${c.id}" type="checkbox" ${selected.has(c.id)?"checked":""}></td><td><span class="name">${c.name}</span><span class="mini">Cadastro simulado</span></td><td>${profiles[c.segment].label}</td><td>${c.days} dias</td><td>${brl(c.amount)}</td><td><span class="tag info">${c.last}</span></td><td><span class="tag ok">${step[2]}</span></td><td><span class="tag ${st[1]}">${st[0]}</span></td></tr>`}).join("");document.querySelectorAll(".row").forEach(ch=>ch.onchange=()=>{ch.checked?selected.add(ch.dataset.id):selected.delete(ch.dataset.id);summary()});el("kpiClients").textContent=clients.length;el("kpiEligible").textContent=eligible().length;el("kpiAmount").textContent=brl(eligible().reduce((s,c)=>s+c.amount,0));summary()}
-    function summary(){const rows=selectedRows();el("selectedCount").textContent=rows.length;el("selectedAmount").textContent=brl(rows.reduce((s,c)=>s+c.amount,0));el("nextStep").textContent=rows.length?stepFor(rows[0])[2]:"-";el("batchStatus").textContent=rows.length?"Pronto":"Sem seleção"}
-    function send(action){const rows=selectedRows();if(!rows.length){el("batchStatus").textContent="Selecione clientes";return}lastPayload={batch:{action,total:rows.length,segment:profiles[profile].label,contacts:rows.map(c=>({id:c.id,segment:profiles[c.segment].label,amount:c.amount,days:c.days,last_event:c.last}))}};el("batchStatus").textContent="Lote preparado";el("log").textContent=`[${new Date().toLocaleString("pt-BR")}] Lote preparado\n`+JSON.stringify(lastPayload,null,2)}
-    document.addEventListener("DOMContentLoaded",()=>{render();el("selectEligible").onclick=()=>{selected=new Set(eligible().map(c=>c.id));render()};el("clear").onclick=()=>{selected.clear();render()};el("selectAll").onchange=e=>{selected=e.target.checked?new Set(clients.map(c=>c.id)):new Set();render()};el("email").onclick=()=>send("EMAIL");el("sms").onclick=()=>send("SMS");el("whatsapp").onclick=()=>send("WHATSAPP");el("debugBtn").onclick=()=>el("debug").classList.toggle("open");el("copy").onclick=()=>navigator.clipboard.writeText(JSON.stringify(lastPayload,null,2))});
+    const reguaProfiles = {
+      novo: {
+        label: "Novo Cliente",
+        icon: "♙",
+        title: "Régua de Cobrança para Novos Clientes",
+        description: "Desenvolva um relacionamento positivo desde o início com estratégias suaves que incentivam o pagamento sem pressionar, garantindo uma boa primeira impressão.",
+        steps: [
+          { value: "-", label: "Emissão", channel: ["✉"], color: "gray" },
+          { value: "02", label: "Antes do vencimento", channel: ["✉"], color: "purple" },
+          { value: "0", label: "No dia do vencimento", channel: ["✉", "◉"], color: "green" },
+          { value: "02", label: "Depois do vencimento", channel: ["✉"], color: "gold" },
+          { value: "04", label: "", channel: ["◉"], color: "gold" },
+          { value: "07", label: "", channel: ["✉"], color: "gold" },
+          { value: "10", label: "", channel: ["◉"], color: "gold" },
+          { value: "15", label: "Depois do vencimento", channel: ["✉"], color: "gold" },
+          { value: "20", label: "", channel: ["◉"], color: "gold" },
+          { value: "30", label: "", channel: ["✉"], color: "gold" }
+        ]
+      },
+      bom: {
+        label: "Bom Pagador",
+        icon: "☺",
+        title: "Régua de Cobrança para Bons Pagadores",
+        description: "Mantenha a confiança e a lealdade com uma cadência de cobrança amigável e flexível que respeita o histórico de pontualidade deste cliente.",
+        steps: [
+          { value: "-", label: "Emissão", channel: ["✉"], color: "gray" },
+          { value: "02", label: "Antes do vencimento", channel: ["✉"], color: "purple" },
+          { value: "0", label: "No dia do vencimento", channel: ["◉"], color: "green" },
+          { value: "02", label: "Depois do vencimento", channel: ["✉"], color: "gold" },
+          { value: "07", label: "", channel: ["◉"], color: "gold" }
+        ]
+      },
+      duvidoso: {
+        label: "Pagador Duvidoso",
+        icon: "☻",
+        title: "Régua de Cobrança para Pagador Duvidoso",
+        description: "Implemente abordagens assertivas com uma cadência mais frequente para assegurar que os pagamentos sejam efetuados, minimizando riscos de inadimplência.",
+        steps: [
+          { value: "-", label: "Emissão", channel: ["✉"], color: "gray" },
+          { value: "07", label: "Antes do vencimento", channel: ["✉"], color: "purple" },
+          { value: "02", label: "", channel: ["SMS"], color: "gold" },
+          { value: "0", label: "No dia do vencimento", channel: ["◉"], color: "green" },
+          { value: "02", label: "", channel: ["◉"], color: "gold" },
+          { value: "07", label: "", channel: ["SMS"], color: "gold" },
+          { value: "15", label: "", channel: ["✉"], color: "gold" },
+          { value: "20", label: "", channel: ["◉"], color: "gold" },
+          { value: "30", label: "Depois do vencimento", channel: ["✉"], color: "gold" },
+          { value: "45", label: "", channel: ["◉"], color: "gold" },
+          { value: "60", label: "", channel: ["SMS"], color: "gold" },
+          { value: "75", label: "", channel: ["✉"], color: "gold" },
+          { value: "90", label: "", channel: ["OP"], color: "gold" }
+        ]
+      },
+      mau: {
+        label: "Mau Pagador",
+        icon: "☹",
+        title: "Régua de Cobrança para Mau Pagador",
+        description: "Aplique uma cobrança rigorosa e estruturada para recuperar débitos, utilizando uma comunicação clara e direta para demonstrar a importância da regularização.",
+        steps: [
+          { value: "-", label: "Emissão", channel: ["✉"], color: "gray" },
+          { value: "02", label: "Antes do vencimento", channel: ["SMS"], color: "purple" },
+          { value: "0", label: "No dia do vencimento", channel: ["◉"], color: "green" },
+          { value: "02", label: "", channel: ["SMS"], color: "gold" },
+          { value: "04", label: "", channel: ["◉"], color: "gold" },
+          { value: "07", label: "", channel: ["✉"], color: "gold" },
+          { value: "10", label: "", channel: ["SMS"], color: "gold" },
+          { value: "15", label: "Depois do vencimento", channel: ["✉"], color: "gold" },
+          { value: "30", label: "Negativação", channel: ["OP"], color: "gold" },
+          { value: "40", label: "Protesto", channel: ["OP"], color: "gold" }
+        ]
+      }
+    };
+
+    let currentProfile = "novo";
+
+    function renderProfileMenu() {
+      const menu = document.getElementById("profileMenu");
+      menu.innerHTML = Object.entries(reguaProfiles).map(([key, profile]) => `
+        <button class="profile-btn ${key === currentProfile ? "active" : ""}" type="button" data-profile="${key}">
+          <span class="profile-icon" aria-hidden="true">${profile.icon}</span>
+          <span>${profile.label}</span>
+        </button>
+      `).join("");
+
+      menu.querySelectorAll(".profile-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          currentProfile = button.dataset.profile;
+          renderRegua();
+        });
+      });
+    }
+
+    function renderTimeline(profile) {
+      return profile.steps.map((step) => `
+        <div class="step">
+          <div class="dot ${step.color}">${step.value}</div>
+          <div class="step-label">${step.label || "&nbsp;"}</div>
+          <div class="channel">${step.channel.map((channel) => `<span>${channel}</span>`).join("")}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderRegua() {
+      const profile = reguaProfiles[currentProfile];
+      renderProfileMenu();
+      document.getElementById("reguaTitle").textContent = profile.title;
+      document.getElementById("reguaDescription").textContent = profile.description;
+      document.getElementById("timeline").innerHTML = renderTimeline(profile);
+    }
+
+    document.addEventListener("DOMContentLoaded", renderRegua);
   </script>
 </body>
 </html>
